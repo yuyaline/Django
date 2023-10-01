@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-npot#)@-*-jva+pr=(n!vg)=4ol%2d@_c&qe8a(u%%g2f)z*c3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -104,9 +104,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/sta/'
+
+STATIC_ROOT = BASE_DIR / "staticfiels"
+
+STATICFILES_DIRS = [str(BASE_DIR / "static")]
+
+MEDIA_ROOT = BASE_DIR / "media"
+
+MEDIA_URL = "medi/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "/login/"

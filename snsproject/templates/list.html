@@ -7,12 +7,20 @@
 {% endblock header %}
 
 {% block content %}
+{% if user.is_authenticated %}
+
 <div class="container">
+    {% for item in object_list %}
     <div class="alert alert-success" role="alert">
-        <p>タイトル：</p>
-        <p>投稿者：</p>
-        <a href="#" class="btn btn-primary" role="button" aria-pressed="true">Primary link</a>
-        <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">Link</a>
+        <p>タイトル：<a href="{% url "detail" item.pk %}">{{item.title}}</a></p>
+        <p>投稿者：{{item.author}}</p>
+        <a href="#" class="btn btn-primary disabled"  role="button" aria-pressed="true">いいね：{{item.good}}</a>
+        <a href="#" class="btn btn-secondary disabled" role="button" aria-pressed="true">既読：{{item.read}}人</a>
     </div>
+    {% endfor %}
+    <a href="{% url "logout" %}" name="logout">ログアウトする</a>
 </div>
+{% else %}
+ログインしてください
+{% endif %}
 {% endblock content %}
